@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block content %}
+    <section class="create-new-post">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form method="POST" class="mt-4 mb-5" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <button class="btn btn-outline-info">Create Article</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}

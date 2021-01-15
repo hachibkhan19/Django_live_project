@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block bgImage %}
+    <!-- bg image -->
+
+    <section class="bg-image">
+
+    </section>
+    {% endblock %}
+
+    {% block scrolling %}
+    <!-- scrolling -->
+    <div class="tricker-wrapper">
+        <div class="text-update">
+            <p>Education leads of life, So share your knowledge without any arrogance</p>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block heading %}
+    <!--heading-->
+    <div class="heading">
+        <p>Articles</p>
+    </div>
+    {% endblock %}
+
+
+    {% block content %}
+    <!--main content-->
+    <section>
+        <div class="container">
+            <div class="row mb-4">
+                {% for a in articles %}
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card mb-4" style="box-shadow:1px 1px 0px 0px gray">
+                        <a href="{{a.single_page_url}}"><img src="{{a.image.url}}" class="card-img-top" alt="" srcset=""></a>
+                        <div class="card-body">
+                            <b><a href="{{a.category_page_url}}">{{a.category.name}}</a></b>
+                            <a href="{{a.single_page_url}}"><strong>{{a.title|truncatewords:3}}.</strong></a>
+                            <b><a href="{{a.article_author_url}}">{{a.article_author.name.get_full_name}}</a></b>
+                        </div>
+                        <div class="card-footer">
+                            <b><span>{{a.posted_on}}</span></b>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+
+    {% block pagination %}
+    <!--pagination-->
+     <section class="mb-5">
+        <div class="container">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        {% if articles.has_previous %}
+                        <a class="page-link" href="?page={{ articles.previous_page_number }}">Prev</a>
+                        {% endif %}
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="">Page {{ articles.number }} of {{ articles.paginator.num_pages }}.</a>
+                    </li>
+                    <li class="page-item">
+                        {% if articles.has_next %}
+                        <a class="page-link" href="?page={{ articles.next_page_number }}">Next</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    {% endblock %}

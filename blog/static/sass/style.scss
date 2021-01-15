@@ -1,0 +1,268 @@
+$black-color: #1c1c21;
+$white-color: #ffffff;
+$red-color: #ff0000;
+
+.navbar{
+    background-color: $black-color;
+    opacity: 0.9;
+    border-bottom: 2px solid rgb(133, 67, 67);
+}
+#tech{
+    color: $white-color;
+    font-size: 21px;
+    padding: 20px 18px;
+}
+#tech:hover{
+    background-color:$red-color;
+    border-top-right-radius: 12px;
+}
+#pro, #cat, #reg, #login, #logout, #create{
+    color: $white-color;
+    font-size: 15px;
+    padding: 20px 18px;
+}
+.nav-item:hover{
+    background-color: $red-color;
+    border-top-right-radius: 12px;
+}
+#btn{
+    background-color: $white-color;
+}
+.bg-image{
+    height: 595px;
+    background: url('../images/pic_2.jpg');
+    background-repeat: no-repeat;   
+    background-size: cover; 
+    background-attachment: fixed;
+}
+.tricker-wrapper{
+    background-color: $black-color;
+    position: relative;
+    max-width: 1300px;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.text-update{
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    left: 12px;
+}
+.text-update p{
+    color: $white-color;
+    position: absolute;
+    width: 150%;
+    margin: 0;
+    font-weight: 700px;
+    text-align: left;
+    transform: translateX(100%);
+    animation: moving 20s linear infinite;
+}
+@keyframes moving{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+.heading p{
+    text-align: center;
+    font-size: 30px;
+    color: $red-color;
+}
+.card img{
+    height: 200px;
+}
+.card-body{
+    b, a{
+        display: block;
+        text-align: center;
+    }
+    a{
+        text-decoration: none;
+        color: $black-color;
+    }    
+}
+.card-body a:hover{
+    color: $red-color;
+}
+.card-footer{
+    b, span{
+        display: block;
+        text-align: center;
+    }
+}
+/* footer */
+.footer-bg{
+    background-color: $black-color;
+}
+.footer-bg hr{
+    margin-top: 50px;
+    background-color: blanchedalmond;
+}
+#footer-container h3{
+    color: #e5e5e5;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    text-align: left;
+    padding-right: 25px;
+    padding-top: 4px;
+}
+.subscribe-form form {
+    width: 100%;    
+    border-bottom: 1px solid #363636;
+}
+.subscribe-form form input{
+    background: no-repeat;
+    border: 0;
+    height: 35px;    
+    color: #ffffff;
+}
+
+.subscribe-form form button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: no-repeat;
+    border: 0;
+    height: 35px;
+    cursor: pointer;
+    text-transform: capitalize;
+    color: #ddd;
+    font-size: 14px;
+    margin-right: 15px;
+}
+.subscribe-form button:hover{
+    color: red;
+}
+.social_link{
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+.social_link .fab, .far{
+    color: #f7f7fd;
+    font-size: 30px;
+    margin-left: 10px;
+}
+/* login */
+.card-form{
+    opacity: 0.9;
+}
+.card-form h3, h6{
+    color: $white-color;
+}
+.login-page{    
+    margin-top: 89px;    
+}
+
+/* single page */
+.single-page{
+    margin-top: 89px;    
+}
+.prev{
+    display: block;
+    float: left;
+    margin-top: 260px;    
+    color: $black-color;
+}
+.prev:hover{
+    color: $red-color;
+}
+
+.next{
+    display: block;
+    float: right;
+    margin-top: 260px;
+    color: $black-color;
+}
+.next:hover{
+    color: $red-color;
+}
+.comment-list h3{
+    font-size: 30px;
+}
+.comment-list li{
+    list-style-type: none;
+}
+.comment-list ol{
+    margin: 0;
+    padding: 0;
+    border: 1px solid rgb(63, 58, 58);
+}
+.avatar{
+    max-width: 40px;
+    float: left;
+    margin: 0 15px 0 0;
+    border-radius: 50%;
+}
+.img-tag{
+    height: auto;
+}
+.comment-author{
+    color: #306998;
+    font-weight: 700;
+}
+.comment-content {
+    padding-top: 5px;
+    margin-left: 5px;
+    clear: both;
+}
+/* comment */
+.comment b{
+    font-size: 30px;
+}
+input, textarea {
+    border: 1px solid #b0a9a9;
+    background-color: #fcfcfc;
+    -webkit-appearance: none;
+    width: 100%;
+    color: rgba(0, 0, 0, .7);
+    font-family: inherit;
+    font-weight: 300;
+}
+textarea {
+    line-height: 1.5;
+    padding: 9px 12px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.btn-comment{
+    background-color: #306998;
+    padding: 10px;
+    border-radius: 0;
+    color: $white-color;
+}
+.btn-comment:hover{
+    background-color: $black-color;
+}
+
+/* article-author */
+.article-author{
+    margin-top: 91px;
+}
+.author-image{
+    width: 70px;
+    height: 70px;    
+    border-radius: 20px;
+}
+.create-new-post{
+    margin-top: 95px;
+}
+.fa-thumbs-up{
+    font-size: 20px;    
+    color: $white-color;    
+}
+.b{
+    color: $white-color;
+    font-size: 21px;
+}

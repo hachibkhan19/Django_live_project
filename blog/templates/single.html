@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block content %}
+    <!--single page-->
+    <section class="single-page">
+        {% if article.id > first.id %}
+        <a href="{% url 'blog:single_page' id=article.id|add:'-1' %}" class="prev p-3" style="text-decoration: none;">Prev</a>
+        {% endif %}
+        {% if article.id < last.id %}
+        <a href="{% url 'blog:single_page' id=article.id|add:'1' %}" class="next p-3" style="text-decoration: none;">Next</a>
+        {% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card text-center mb-4">
+                        <img src="{{article.image.url}}" class="card-img-top" alt="" srcset="" style="height:600px">
+                        <div class="card-body">                    
+                            <b><a href="{{article.category_page_url}}">{{article.category.name}}</a></b>
+                            <strong class="text-muted">{{article.title}}</strong>
+                            <b><a href="{{article.article_author_url}}">{{article.article_author.name.get_full_name}}</a></b>
+                        </div>
+                        <p>{{ article.text| safe}}.</p>
+                        <div class="card-footer">
+                            <b><span>{{article.posted_on}}</span></b>
+                        </div>
+                    </div>
+                    <a href="{% url 'blog:pdf' id=article.id %}" class="btn btn-danger btn-lg" target="_blank">Download PDF</a>
+                    <div class="heading">
+                        <p>Related Articles {{article.category.name}}</p>
+                    </div>
+                    {% for r in related_articles %}
+                    <div class="card text-center mb-5">
+                        <img src="{{r.image.url}}" class="card-img-top" alt="" srcset="" style="height: 600px;">
+                        <div class="card-body">                                                
+                            <b><a href="{{r.category_page_url}}">{{r.category.name}}</a></b>
+                            <strong class="text-muted">{{r.title}}.</strong>
+                            <b><a href="{{r.article_author_url}}">{{r.article_author.name.get_full_name}}</a></b>
+                        </div>
+                        <p>{{ r.text|safe }}.</p>
+                        <div class="card-footer">
+                            <b><span>{{r.posted_on}}</span></b>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>    
+    </section>
+    {% endblock %}
+
+    {% block show_comment %}
+    <!--display comments-->
+    <section class="comment-list mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3><strong>Comments</strong></h3>
+                    <ol style="border:0px">
+                        <div class="comment-content">
+                            <div>
+                                {% for comment in comments %}
+                                <div style="background:#f0f0f0">
+                                    <i class="fas fa-user"></i>
+                                    <span class="comment-author">{{comment.name}}</span>
+                                </div>
+                                <p style="margin-left:17px; margin-top:7px">{{comment.text}}</p>
+                                {% empty %}
+                                <p>No comment found</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+
+    {% block comment %}
+    <!-- comment -->
+    <section class="mt-5 mb-5 comment">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <b>Comment</b>
+                    <p class="mt-2">Thank you for reading. Leave a comment below and let us know what do you think of this article.</p>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-comment mt-3">Post comment</button>                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}

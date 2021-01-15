@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block content %}
+    <!-- login -->
+    <div class="container login-page">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card bg-primary text-center card-form" style="box-shadow:2px 0px 3px 0px gray">
+                    <div class="card-body">
+                        <h3>Sign In Today</h3>
+                        <h6>Please fill out this form to login</h6>
+                        {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-lg" placeholder="Username" name="username">
+                            </div>                                                                
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-lg" placeholder="Password" name="password">
+                            </div>                                               
+                            <button class="btn btn-outline-light btn-block">Submit</button>
+                            <div class="mt-2">
+                                <b style="color:white; float:left" class="mr-1">Are you new here?</b>
+                                <a href="{% url 'blog:registration' %}" style="float:left">Register now</a>
+                            </div>
+                        </form>                              
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
